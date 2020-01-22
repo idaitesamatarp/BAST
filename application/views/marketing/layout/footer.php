@@ -48,12 +48,6 @@
   <!-- Custom scripts for all pages-->
   <script src="<?php echo base_url().'assets/js/sb-admin-2.min.js'?>"></script>
 
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url().'assets/js/demo/chart-area-demo.js'?>"></script>
-  <script src="<?php echo base_url().'assets/js/demo/chart-pie-demo.js'?>"></script>
 
   <!-- Page level plugins -->
   <script src="<?php echo base_url().'assets/vendor/datatables/jquery.dataTables.min.js'?>"></script>
@@ -61,9 +55,49 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url().'assets/js/demo/datatables-demo.js'?>"></script>
+
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="<?php echo base_url().'assets/js/jquery.signaturepad.js'?>"></script> 
+  <script src="<?php echo base_url().'assets/js/numeric-1.2.6.min.js'?>"></script> 
+  <script src="<?php echo base_url().'assets/js/bezier.js'?>"></script>
+  <script src="<?php echo base_url().'assets/js/json2.min.js'?>"></script>
+  <script type='text/javascript' src="https://github.com/niklasvh/html2canvas/releases/download/0.4.1/html2canvas.js"></script>
     
+  <script> 
+        $(document).ready(function(e){
+            $(document).ready(function() {
+            $('#signArea1').signaturePad({drawOnly:true, drawBezierCurves:true, lineTop:90});
+            });
+            
+            $("#btnSaveSign").click(function(e){
+            html2canvas([document.getElementById('sign-pad')], {
+                onrendered: function (canvas) {
+                var canvas_img_data = canvas.toDataURL('image/png');
+                var img_data = canvas_img_data.replace(/^data:image\/(png|jpg);base64,/, "");
+                var tgl_bast = 
+                //ajax call to save image inside folder
+                $.ajax({
+                    url: '<?php echo base_url();?>marketing/project/save_sign/<?=$id?>',
+                    data: { img_data:img_data },
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (response) {
+                      window.location.assign("<?php echo base_url()?>marketing/project")
+                    }
+                });
+                }
+            })
+            });
+        });
+  </script>
 
-  
+<script> 
+        $(document).ready(function(e){
+            $(document).ready(function() {
+            $('#signArea2').signaturePad({drawOnly:false, drawBezierCurves:false, lineTop:90});
+            });
+        });
+</script>
+
 </body>
-
 </html>

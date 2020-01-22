@@ -4,7 +4,7 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h4 class="m-0 font-weight-bold text-primary">Data User</h4> <br>
+    <h4 class="m-0 font-weight-bold text-primary">Data User Karyawan</h4>
     <?php echo $this->session->flashdata('notif') ?>
   </div>
   <div class="card-body">
@@ -15,6 +15,7 @@
         <tr>
           <th >No</th>
           <th>Nama Karyawan</th>
+          <th>Foto</th>
           <th>Level</th>
           <th>Options</th>
         </tr>
@@ -29,6 +30,7 @@
         <tr>
           <td><?php echo $no++ ?></td>
           <td><?php echo $hasil->nama_kar ?></td>
+          <td><img src="<?php echo base_url('upload/user/'.$hasil->image) ?>" width="64" /></td>
           <td><?php echo $hasil->level ?></td>
           <td>
               <a href="<?php echo base_url() ?>admin/users/edit/<?php echo $hasil->id_user?>" class="btn btn-sm btn-info"><span class="fa fa-edit"></span> Edit</a>
@@ -59,7 +61,8 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h4 class="m-0 font-weight-bold text-primary">Data User</h4>
+    <h4 class="m-0 font-weight-bold text-primary">Data User Pelanggan</h4>
+    <?php echo $this->session->flashdata('notif') ?>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -69,6 +72,7 @@
         <tr>
           <th>No</th>
           <th>Nama Pelanggan</th>
+          <th>Foto</th>
           <th>Level</th>
           <th>Options</th>
         </tr>
@@ -82,6 +86,7 @@
         <tr>
           <td><?php echo $no++ ?></td>
           <td><?php echo $hasil->nama_pel ?></td>
+          <td><img src="<?php echo base_url('upload/user/'.$hasil->image) ?>" width="64" /></td>
           <td><?php echo $hasil->level ?></td>
           <td>
               <a href="<?php echo base_url() ?>admin/users/edit/<?php echo $hasil->id_user ?>" class="btn btn-sm btn-info"><span class="fa fa-edit"></span> Edit</a>

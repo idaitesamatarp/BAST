@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="col-md-12">
-                <?php echo form_open('admin/users/simpan') ?>
+                <?php echo form_open_multipart('admin/users/simpan') ?>
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Nama Karyawan</label>
@@ -31,6 +31,7 @@
                     <label for="text" class="m-0 font-weight-bold text-dark">Password</label> 
                     <input type="password" name="password" class="form-control" placeholder="Masukkan Password">
                 </div>
+
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Level</label>

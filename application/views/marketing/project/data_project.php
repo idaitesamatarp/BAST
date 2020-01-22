@@ -10,8 +10,8 @@
   <div class="card-body"  >
     <div class="table-responsive"  > 
       <table class="table table-striped table-bordered table-hover"  id="dataTable" width="100%" cellspacing="0" >
-      <div class="pull-right"><a href="<?php echo base_url() ?>marketing/project/tambah"  class="btn btn-sm btn-success" ><span class="fa fa-plus"></span> Buat Project Baru </a></div> <br>
-      <thead style="text-align: center" class="m-0 font-weight-bold text-primary">
+      <div class="pull-left"><a href="<?php echo base_url() ?>marketing/project/tambah"  class="btn btn-sm btn-success" ><span class="fa fa-plus"></span> Buat Project Baru </a></div> <br> <br>
+      <thead align="center" class="m-0 font-weight-bold text-primary">
         <tr>
           <th>No</th>
           <th>Nama Project</th>
@@ -33,11 +33,18 @@
           <td><?php echo $hasil->nama_project ?></td>
           <td><?php echo $hasil->no_po ?></td>
           <td><?php echo $hasil->tanggal_po ?></td> 
-          <td > <span class="badge badge-pill badge-danger" ><?php echo $hasil->status ?></span></td>
+          <td > <span class="badge badge-pill  <?php if($hasil->status=="New") {echo "badge-dark";} 
+                                                     elseif($hasil->status=="Analisa") {echo "badge-primary";} 
+                                                     elseif($hasil->status=="Desain") {echo "badge-info";} 
+                                                     elseif($hasil->status=="Implementasi") {echo "badge-warning";} 
+                                                     elseif($hasil->status=="Testing") {echo "badge-success";} 
+                                                     elseif($hasil->status=="Selesai") {echo "badge-danger";} 
+          ?>" ><?php echo $hasil->status ?></span></td>
           <td>
                 <a href="<?php echo base_url() ?>marketing/project/lihat/<?php echo $hasil->id_project?>" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span> Lihat Detail</a>
                 <a onclick="deleteConfirm('<?php echo base_url('marketing/project/hapus/'.$hasil->id_project) ?>')"
                   href="#!" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span> Hapus</a>
+                <a href="<?php echo base_url() ?>marketing/project/buat/<?php echo $hasil->id_project?>" class="btn btn-sm btn-success"><span class="fa fa-plus"> </span> Buat Form</a>
           </td>
         </tr>
 

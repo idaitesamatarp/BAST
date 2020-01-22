@@ -7,7 +7,7 @@
         </div>
         <div class="card-body">
             <div class="col-md-12">
-                <?php echo form_open('admin/users/update') ?>
+                <?php echo form_open_multipart('admin/users/update') ?>
 
                 <div class="form-group">
                     
@@ -25,6 +25,16 @@
                 </div>
 
                 <div class="form-group">
+					<label for="name" class="m-0 font-weight-bold text-dark">Foto</label>
+					<input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
+					     type="file" name="image" />
+					<input type="hidden" name="old_image" value="<?php echo $data_user->image ?>" />
+					<div class="invalid-feedback">
+						<?php echo form_error('image') ?>
+					</div>
+				</div>
+
+                <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Level</label>
                         <select name="level" class="form-control">
                             <option value="">--Pilih Level--</option>
@@ -38,7 +48,7 @@
 
                 <button type="submit" class="btn btn-md btn-success" ><span class="fa fa-bars"> </span> Update </button>
               <button type="reset" class="btn btn-md btn-warning"><span class="fa fa-trash"></span> Clear </button>
-              <button class="btn btn-md btn-info" href="<?php echo site_url('admin/users/') ?>"><i class="fas fa-arrow-left"></i>  Back </button>
+              <button class="btn btn-md btn-info" href="<?php echo site_url('admin/users') ?>"><i class="fas fa-arrow-left"></i>  Back </button>
                 <?php echo form_close() ?>
             </div>
         </div>

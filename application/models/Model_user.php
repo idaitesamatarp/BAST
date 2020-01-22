@@ -2,7 +2,7 @@
 class Model_user extends CI_Model {
     public function get_karyawan()
     {
-        $query=$this->db->select("id_user,nama_kar,username,level");
+        $query=$this->db->select("id_user,nama_kar,username,level,image");
         $query=$this->db->from("user");
         $query=$this->db->join("karyawan","karyawan.id_karyawan=user.id_karyawan","inner")	 
         ->order_by("id_user", "DESC")
@@ -31,9 +31,9 @@ class Model_user extends CI_Model {
     
     public function get_pelanggan()
     {
-        $query=$this->db->select('id_user,nama_pel,username,level');
+        $query=$this->db->select('id_user,nama_pel,username,level,image');
         $query=$this->db->from('user');
-        $query=$this->db->join('pelanggan','pelanggan.id_pelanggan=user.id_pelanggan','inner')	 
+        $query=$this->db->join('pelanggan','pelanggan.id_pelanggan=user.id_user','inner')	 
         ->order_by('id_user', 'DESC')
         ->get();
         return $query->result();
@@ -77,7 +77,7 @@ class Model_user extends CI_Model {
 
         $query = $this->db->where("id_user", $id_user)
                 ->get();
-       // echo $this->db->last_query();
+        //echo $this->db->last_query();
         if($query){
             return $query->row();
         }else{

@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <div class="col-md-12">
-                <?php echo form_open('admin/karyawan/update') ?>
+              <?php echo form_open('admin/karyawan/update') ?>
 
               <div class="form-group">
                 <label for="text" class="m-0 font-weight-bold text-dark">NIK</label>
@@ -43,7 +43,7 @@
 
               <button type="submit" class="btn btn-md btn-success" ><span class="fa fa-bars"> </span> Update </button>
               <button type="reset" class="btn btn-md btn-warning"><span class="fa fa-trash"></span> Clear </button>
-              <button class="btn btn-md btn-info" href="<?php echo site_url('admin/karyawan/') ?>"><i class="fas fa-arrow-left"></i>  Back </button>
+              <a href="<?php echo base_url() ?>admin/karyawan" class="btn btn-sm btn-primary"> <span class="fa fa-arrow-left"></span> Back</a>
                 <?php echo form_close() ?>
             </div>
         </div>

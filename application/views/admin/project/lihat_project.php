@@ -20,12 +20,12 @@
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Nama Marketing</label>
-                    <input type="text" value="<?php echo $data_project->id_user ?>" name="id_marketing" class="form-control" readonly >
+                    <input type="text" value="<?php echo $data_project->nama_marketing ?>" name="id_marketing" class="form-control" readonly >
                 </div>
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Nama Programmer</label>
-                    <input type="text" value="<?php echo $data_project->id_user ?>" name="id_programmer" class="form-control" readonly >
+                    <input type="text" value="<?php echo $data_project->nama_programmer ?>" name="id_programmer" class="form-control" readonly >
                 </div>
 
                 <div class="form-group">

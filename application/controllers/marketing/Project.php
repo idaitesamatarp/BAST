@@ -13,10 +13,11 @@ class Project extends CI_Controller {
 
     public function index()
     {
+        $id_user =$this->session->userdata['id_user'];
         $data=array('title'=>'Marketing Dashboard',
                     'isi'=>'marketing/project/data_project',
                     
-                    'data_project' => $this->model_project->get_all(),
+                    'data_project' => $this->model_project->get_by_marketing($id_user),
                 );
         $this->load->view('marketing/layout/wrapper',$data,FALSE); 
         
@@ -60,12 +61,26 @@ class Project extends CI_Controller {
     }
 
     public function lihat($id_project) {
+        
         $data = array(
 
             'title'     => 'Lihat Data Project',
             'isi'=>'marketing/project/lihat_project',
             'data_project' => $this->model_project->lihat($id_project),
+
             //'get_category1'=> $this->model_project->get_pelanggan('nama_pel'),
+        );
+        //print_r($data);
+        $this->load->view('marketing/layout/wrapper',$data,FALSE);
+    }
+
+    public function buat($id_project) {
+        $data = array(
+
+            'title'     => 'Lihat Data Project',
+            'isi'=>'marketing/project/buat_form',
+            'data_project' => $this->model_project->buat($id_project),
+            'id' => $id_project
         );
         //print_r($data);
         $this->load->view('marketing/layout/wrapper',$data,FALSE);
@@ -81,5 +96,20 @@ class Project extends CI_Controller {
         //redirect
         redirect('marketing/project');
 
+    }
+
+    public function save_sign($id)
+    { 
+        $result = array();
+	    $imagedata = base64_decode($_POST['img_data']);
+	    $filename = md5(date("dmYhisA"));
+	    //Location to where you want to created sign image
+	    $file_name = './doc_signs/'.$filename.'.png';
+	    file_put_contents($file_name,$imagedata);
+	    $result['status'] = 1;
+	    $result['file_name'] = $file_name;
+        echo json_encode($result);
+        $this->model_project->save_sign($filename, $id, $tgl_bast);
+        $tgl_bast=$this->input->post['tgl_bast'];
     }
 }

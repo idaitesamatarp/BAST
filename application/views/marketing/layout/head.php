@@ -21,10 +21,25 @@
   <!-- Custom styles for this page -->
   <link href="<?php echo base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-  
+  <!-- Bootstrap Core Css -->
+<link href="<?php base_url().'assets/css/bootstrap.css'?>" rel="stylesheet" />
+
+<!-- Font Awesome Css -->
+<link href="<?php base_url().'assets/css/font-awesome.min.css'?>" rel="stylesheet" />
+
+<!-- Bootstrap Select Css -->
+<link href="<?php base_url().'assets/css/bootstrap-select.css'?>" rel="stylesheet" />
+
+<!-- Custom Css -->
+<link href="<?php base_url().'assets/css/app_style.css'?>" rel="stylesheet" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link href="<?php echo base_url().'assets/css/jquery.signaturepad.css'?>" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
   
-</head>
 
-<body id="page-top">
+
+  
   

@@ -2,7 +2,7 @@
 
 class Chat extends CI_Controller
 {
-    public $user;
+    public $usr;
 
     public function __construct()
     {
@@ -11,26 +11,21 @@ class Chat extends CI_Controller
         $this->load->database();
         $this->load->helper(array('url', 'form'));
         $this->load->library('user_agent');
+        $this->load->model('model_chat'); 
 
-        if (!isset($this->session->userdata['logged_in']) || $this->session->userdata['logged_in'] === false) {
-            redirect('welcome');
-        }
-
-        $this->user = $this->db->get_where('user', array('id_user' => $this->session->userdata['id_user']), 1)->row();
+        $this->usr = $this->db->get_where('user', 
+                                array('id_user' => $this->session->userdata['id_user']), 1)
+                                ->row();
     }
 
     public function index()
     {
-        $teman = $this->db->select("id_user,nama_kar,level");
-        $teman = $this->db->from("user");
-        $teman = $this->db->join("karyawan","karyawan.id_karyawan=user.id_karyawan","inner");
-        $teman = $this->db->where("level", 'marketing')
-        ->get();
 
         $data=array('title'=>'Admin Dashboard',
                     'isi'=>'admin/chat/chat_dashboard',
                     
-                    'teman' => $teman
+                    'marketing'=> $this->model_chat->get_chat_mar('nama_kar'),
+                    'programmer'=> $this->model_chat->get_chat_prog('nama_kar'),
                 );
         $this->load->view('admin/layout/wrapper',$data,FALSE); 
     }
@@ -40,22 +35,29 @@ class Chat extends CI_Controller
         header('Content-Type: application/json');
         if ($this->input->is_ajax_request()) {
             // Find friend
-            $friend = $this->db->get_where('user', array('id_user' => $this->input->post('chatWith')), 1)->row();
+            $friend =  $this->db
+            ->select('user.id_user,karyawan.nama_kar')
+            ->from('user')
+            ->join('karyawan', 'karyawan.id_karyawan=user.id_user')
+            ->where(array('id_user' => $this->input->post('chatWith')), 1)
+            ->get()
+            ->row();
 
             // Get Chats
             $chats = $this->db
-                ->select('chat.*, user.name')
+                ->select('chat.*,user.id_user,karyawan.nama_kar,user.image')
                 ->from('chat')
                 ->join('user', 'chat.send_by = user.id_user')
-                ->where('(send_by = '. $this->user->id_user .' AND send_to = '. $friend->id_user .')')
-                ->or_where('(send_to = '. $this->user->id_user .' AND send_by = '. $friend->id_user .')')
+                ->join('karyawan', 'karyawan.id_karyawan=user.id_user')
+                ->where('(send_by = '. $this->usr->id_user .' AND send_to = '. $friend->id_user .')')
+                ->or_where('(send_to = '. $this->usr->id_user .' AND send_by = '. $friend->id_user .')')
                 ->order_by('chat.time', 'desc')
                 ->limit(100)
                 ->get()
                 ->result();
-
+            
             $result = array(
-                'name' => $friend->name,
+                'nama_kar' => $friend->nama_kar,
                 'chats' => $chats
             );
             echo json_encode($result);
@@ -67,7 +69,7 @@ class Chat extends CI_Controller
         $this->db->insert('chat', array(
             'message' => htmlentities($this->input->post('message', true)),
             'send_to' => $this->input->post('chatWith'),
-            'send_by' => $this->user->id_user
+            'send_by' => $this->usr->id_user
         ));
     }
 }

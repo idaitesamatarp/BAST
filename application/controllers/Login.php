@@ -10,6 +10,8 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         //load model admin
         $this->load->model('user');
+      
+        
     }
 
     public function index()
@@ -47,10 +49,14 @@ class Login extends CI_Controller {
                     foreach ($checking as $apps) {
 
                         $session_data = array(
-                            'id_user'  => $apps->id_user,
-                            'username' => $apps->username,
-                            'password' => $apps->password,
-                            'level'    => $apps->level
+                            'id_user'       => $apps->id_user,
+                            'username'      => $apps->username,
+                            'password'      => $apps->password,
+                            'level'         => $apps->level,
+                            'id_pelanggan'  =>$apps->id_pelanggan,
+                            'id_karyawan'   =>$apps->id_karyawan,
+                            'image'         =>$apps->image
+                         
                         );
                         //set session userdata
                         $this->session->set_userdata($session_data);
@@ -68,8 +74,8 @@ class Login extends CI_Controller {
                     }
                 }else{
 
-                    $data['error'] = '<div class="alert alert-danger" style="margin-top: 3px">
-                        <div class="header"><b><i class="fa fa-exclamation-circle"></i> ERROR</b> username atau password salah!</div></div>';
+                    $data['error'] = '<div class="alert alert-warning" style="margin-top: 3px">
+                        <div class="header"><b><i class="fa fa-exclamation-circle"></i> ERROR</b> Username atau Password Salah!</div></div>';
                     $this->load->view('login', $data);
                 }
 

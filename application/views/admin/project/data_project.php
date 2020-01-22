@@ -33,10 +33,16 @@
           <td><?php echo $hasil->nama_project ?></td>
           <td><?php echo $hasil->no_po ?></td>
           <td><?php echo $hasil->tanggal_po ?></td> 
-          <td > <span class="badge badge-pill badge-danger" ><?php echo $hasil->status ?></span></td>
+          <td > <span class="badge badge-pill  <?php if($hasil->status=="New") {echo "badge-dark";} 
+                                                     elseif($hasil->status=="Analisa") {echo "badge-primary";} 
+                                                     elseif($hasil->status=="Desain") {echo "badge-info";} 
+                                                     elseif($hasil->status=="Implementasi") {echo "badge-warning";} 
+                                                     elseif($hasil->status=="Testing") {echo "badge-success";} 
+                                                     elseif($hasil->status=="Selesai") {echo "badge-danger";} 
+          ?>" ><?php echo $hasil->status ?></span></td>
           <td>
-                <a href="<?php echo base_url() ?>marketing/project/lihat/<?php echo $hasil->id_project?>" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span> Lihat Detail</a>
-               
+            <a href="<?php echo base_url() ?>admin/project/lihat/<?php echo $hasil->id_project?>" class="btn btn-sm btn-warning"><span class="fa fa-eye"></span> Lihat Projek</a>
+            <a href="<?php echo base_url() ?>admin/project/bast/<?php echo $hasil->id_project?>" class="btn btn-sm btn-primary"><span class="fa fa-clipboard"></span> Lihat Form Bast</a>
           </td>
         </tr>
 

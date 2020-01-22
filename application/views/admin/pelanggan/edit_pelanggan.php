@@ -3,7 +3,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Pelanggan</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Edit Data Pelanggan</h6>
         </div>
         <div class="card-body">
             <div class="col-md-12">
@@ -33,6 +33,16 @@
               <div class="form-group">
                 <label for="text" class="m-0 font-weight-bold text-dark">No HP</label>
                 <input type="text" name="nohp" value="<?php echo $data_pelanggan->nohp ?>" class="form-control"  placeholder="Masukkan No HP" >
+              </div>
+
+              <div class="form-group">
+                <label for="text" class="m-0 font-weight-bold text-dark">Jabatan</label>
+                <input type="text" name="jabatan" value="<?php echo $data_pelanggan->jabatan ?>" class="form-control"  placeholder="Masukkan Jabatan" >
+              </div>
+
+              <div class="form-group">
+                <label for="text" class="m-0 font-weight-bold text-dark">Nama Perusahaan</label>
+                <input type="text" name="perusahaan" value="<?php echo $data_pelanggan->perusahaan ?>" class="form-control"  placeholder="Masukkan Perusahaan" >
               </div>
 
               <button type="submit" class="btn btn-md btn-success" ><span class="fa fa-bars"> </span> Update </button>

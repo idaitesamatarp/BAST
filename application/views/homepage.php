@@ -6,7 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <title>Desnet BAST Online</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <style>
+    </style>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url().'includes/css/open-iconic-bootstrap.min.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'includes/css/animate.css'?>">
@@ -20,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <link rel="stylesheet" href="<?php echo base_url().'includes/css/flaticon.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'includes/css/icomoon.css'?>">
     <link rel="stylesheet" href="<?php echo base_url().'includes/css/style.css'?>">
+    
   </head>
   <body>
     <div class="home-slider owl-carousel">

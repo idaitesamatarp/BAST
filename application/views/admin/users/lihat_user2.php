@@ -10,33 +10,33 @@
                 <?php echo form_open() ?>
 
                 <div class="form-group">                    
-                    <input type="hidden" value="<?php echo $data_user->id_user ?>" name="id_user" value="" class="form-control" placeholder="Masukkan Username">
+                    <input type="hidden" value="<?php echo $data_user2->id_user ?>" name="id_user" value="" class="form-control" placeholder="Masukkan Username">
                 </div>
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Nama Pelanggan</label>
-                    <input type="text" value="<?php echo $data_user->nama_pel ?>" name="nama_kar" class="form-control" placeholder="Masukkan Username" readonly>
+                    <input type="text" value="<?php echo $data_user2->nama_pel ?>" name="nama_kar" class="form-control" placeholder="Masukkan Username" readonly>
                 </div>
                 
                 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Username</label>
-                    <input type="text" value="<?php echo $data_user->username ?>" name="username" class="form-control" placeholder="Masukkan Username" readonly>
+                    <input type="text" value="<?php echo $data_user2->username ?>" name="username" class="form-control" placeholder="Masukkan Username" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Password</label> 
-                    <input type="password" value="<?php echo $data_user->password ?>" name="password" class="form-control" placeholder="Masukkan Password" readonly>
+                    <input type="password" value="<?php echo $data_user2->password ?>" name="password" class="form-control" placeholder="Masukkan Password" readonly>
                 </div>
 
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Level</label>
                         <select name="level" class="form-control" readonly>
                             <option value="">--Pilih Level--</option>
-                            <option value="admin"<?php echo $data_user->level=='admin'?'selected':'' ?>>admin</option>
-                            <option value="marketing"<?php echo $data_user->level=='marketing'?'selected':'' ?>>marketing</option>
-                            <option value="programmer"<?php echo $data_user->level=='programmer'?'selected':'' ?>>programmer</option>
-                            <option value="pelanggan"<?php echo $data_user->level=='pelanggan'?'selected':'' ?>>pelanggan</option>
+                            <option value="admin"<?php echo $data_user2->level=='admin'?'selected':'' ?>>admin</option>
+                            <option value="marketing"<?php echo $data_user2->level=='marketing'?'selected':'' ?>>marketing</option>
+                            <option value="programmer"<?php echo $data_user2->level=='programmer'?'selected':'' ?>>programmer</option>
+                            <option value="pelanggan"<?php echo $data_user2->level=='pelanggan'?'selected':'' ?>>pelanggan</option>
                         </select>
                         <span class="help-block"></span>
                 </div>

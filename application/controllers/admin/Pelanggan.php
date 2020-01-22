@@ -41,6 +41,8 @@ class Pelanggan extends CI_Controller {
             'gender' => $this->input->post("gender"),
             'alamat'         => $this->input->post("alamat"),
             'nohp'    => $this->input->post("nohp"),
+            'jabatan'    => $this->input->post("jabatan"),
+            'perusahaan'    => $this->input->post("perusahaan")
             
 
         );
@@ -77,6 +79,8 @@ class Pelanggan extends CI_Controller {
                 'gender' => $this->input->post("gender"),
                 'alamat'         => $this->input->post("alamat"),
                 'nohp'    => $this->input->post("nohp"),
+                'jabatan'    => $this->input->post("jabatan"),
+                'perusahaan'    => $this->input->post("perusahaan")
             );
     
 

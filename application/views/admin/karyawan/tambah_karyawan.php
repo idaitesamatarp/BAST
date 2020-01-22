@@ -37,7 +37,8 @@
 
                 <button type="submit" class="btn btn-md btn-success"><span class="fa fa-save"></span> Simpan </button>
                 <button type="reset" class="btn btn-md btn-warning"><span class="fa fa-trash"></span> Clear </button>
-                
+                <a href="<?php echo base_url() ?>admin/karyawan" class="btn btn-sm btn-primary"> <span class="fa fa-arrow-left"></span> Back</a>
+
                 <?php echo form_close() ?>
             </div>
         </div>
