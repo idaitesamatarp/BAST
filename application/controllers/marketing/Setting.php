@@ -32,7 +32,7 @@ class Setting extends CI_Controller
         $id_user = $this->session->userdata('id_user');
 
         $data = array(
-            'title'     => 'Profile marketing',
+            'title'     => 'Profile Marketing',
             'isi'       => 'marketing/account/setting',
             'data_user' => $this->model_account->edit($id_user)
 
@@ -57,7 +57,6 @@ class Setting extends CI_Controller
                     'username'         => $this->input->post("username"),
                     'password'    => md5($this->input->post("password")),
                     'image'    => $image,
-
                 );
                 
             }
@@ -66,7 +65,6 @@ class Setting extends CI_Controller
                 $data = array(
                     'username'         => $this->input->post("username"),
                     'image'    => $image,
-      
                 );
             }
 

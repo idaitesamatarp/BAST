@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
  
                 var oldscrollHeight = $container[0].scrollHeight;
                 var oldLength = 0;
-                $.post('<?= site_url('pelanggan/chat/getChats') ?>', {chatWith: $data.chatWith}, function(data, textStatus, xhr) {
+                $.post('<?= site_url('marketing/chatpel/getChats') ?>', {chatWith: $data.chatWith}, function(data, textStatus, xhr) {
                     $that.find('a.nama_pel').text(data.nama_pel);
                     // from last
                     var chatLength = data.chats.length;
@@ -141,14 +141,13 @@ jQuery(document).ready(function($) {
                     $.each(data.chats, function(index, el) {
                         newIndex--;
                         var val = data.chats[newIndex];
- 
                         var tpl = $('#msg-template').html();
                         var tplBody = $('<div/>').append(tpl);
                         var id = (val.chat_id +'_'+ val.send_by +'_'+ val.send_to).toString();
                         
  
                         if ($that.find('#'+ id).length == 0) {
-                            tplBody.find('tbody').attr('id', id); // set class
+                            tplBody.find('tbody').attr('id_user', id); // set class
                             tplBody.find('td.nama_pel').text(val.nama_pel); // set name
                             tplBody.find('td.time').text(val.time); // set time
                             tplBody.find('.msg-wgt-message-list-body > td').html(nl2br(val.message)); // set message
@@ -167,10 +166,9 @@ jQuery(document).ready(function($) {
             $that.find('textarea').on('keydown', function(e) {
                 var $textArea = $(this);
                 if (e.keyCode === 13 && e.shiftKey === false) {
-                    $.post('<?= site_url('pelanggan/chat/sendMessage') ?>', {message: $textArea.val(), chatWith: $data.chatWith}, function(data, textStatus, xhr) {
+                    $.post('<?= site_url('marketing/chatpel/sendMessage') ?>', {message: $textArea.val(), chatWith: $data.chatWith}, function(data, textStatus, xhr) {
                     });
                     $textArea.val(''); // clear input
- 
                     e.preventDefault(); // stop 
                     return false;
                 }

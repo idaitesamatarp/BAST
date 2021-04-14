@@ -43,7 +43,7 @@ class Chat extends CI_Controller
             ->get()
             ->row();
 
-                        //echo $this->db->last_query();
+            // echo $this->db->last_query();
 
             // Get Chats
             $chats = $this->db

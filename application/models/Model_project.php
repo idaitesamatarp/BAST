@@ -75,12 +75,12 @@ class Model_project extends CI_Model {
         $query=$this->db->join("user","user.id_user=project.id_pelanggan",
                                       "user.id_user=project.id_marketing",
                                      "user.id_user=project.id_programmer","inner");
-        $query=$this->db->join("pelanggan","pelanggan.id_pelanggan=user.id_pelanggan","inner");
+        $query=$this->db->join("pelanggan","pelanggan.id_pelanggan=project.id_pelanggan","inner");
         $query=$this->db->join("karyawan a","a.id_karyawan=project.id_marketing","inner");
         $query=$this->db->join("karyawan b","b.id_karyawan=project.id_programmer","inner");
         $query = $this->db->where("id_project", $id_project)
                           ->get();
-        //echo $this->db->last_query();                 
+        // echo $this->db->last_query();                 
         if($query){
             return $query->row();
         }else{

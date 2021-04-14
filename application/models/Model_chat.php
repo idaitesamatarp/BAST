@@ -46,9 +46,10 @@ class Model_chat extends CI_Model {
     {
         $query = $this->db->select("id_user,nama_pel,level");
         $query = $this->db->from("user");
-        $query = $this->db->join("pelanggan","pelanggan.id_pelanggan=user.id_pelanggan","inner");
+        $query = $this->db->join("pelanggan","pelanggan.id_pelanggan=user.id_user","inner");
         $query = $this->db->where("level", 'pelanggan' )
         ->get();
+        // echo $this->db->last_query();
         return $query->result();
     }
 

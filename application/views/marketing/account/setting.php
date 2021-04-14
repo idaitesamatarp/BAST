@@ -43,9 +43,6 @@
                   <td width="20px"> : </td>
                   <td><?php echo $hasil->username ?></td>
                 </tr>
-                    
-               
-                
                 <tr>
                   <td width="150px">Password</td>
                   <td width="20px"> : </td>

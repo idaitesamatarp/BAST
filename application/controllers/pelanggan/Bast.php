@@ -13,6 +13,7 @@ class Bast extends CI_Controller
     public function index()
     {
         $id_user=$this->session->userdata('id_user');
+        echo $id_user;
         $data=array (
 
             'title'         =>'BAST Pelanggan Dashboard',

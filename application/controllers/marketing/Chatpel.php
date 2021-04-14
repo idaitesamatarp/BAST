@@ -34,18 +34,14 @@ class Chatpel extends CI_Controller
         header('Content-Type: application/json');
         if ($this->input->is_ajax_request()) {
             // Find friend
-            $friend =  $this->db
-            ->select('user.id_user,pelanggan.nama_pel')
-            ->from('user')
-            ->join('pelanggan', 'pelanggan.id_pelanggan=user.id_pelanggan')
-            ->where(array('id_user' => $this->input->post('chatWith')), 1)
-            ->get()
-            ->row();
-
+            $friend = $this->db
+            ->select('user.id_user, pelanggan.nama_pel')
+            ->join('pelanggan','pelanggan.id_pelanggan = user.id_user')
+            ->get_where('user', array('id_user' => $this->input->post('chatWith')), 1)->row();
+            
             // Get Chats
-            //echo $this->db->last_query();
             $chats = $this->db
-                ->select('chat.*,user.id_user,pelanggan.nama_pel')
+                ->select('chat.*,user.id_user,pelanggan.nama_pel,user.image')
                 ->from('chat')
                 ->join('user', 'chat.send_by = user.id_user')
                 ->join('pelanggan', 'pelanggan.id_pelanggan=user.id_user')

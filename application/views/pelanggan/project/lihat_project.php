@@ -10,7 +10,7 @@
             <div class="col-md-12">
             <?php echo form_open_multipart('pelanggan/projet/lihat')?>
                 <div class="form-group">                    
-                    <input type="hidden" value="<?php echo $data_project->id_project ?>" name="id_project" value="" class="form-control" readonly>
+                    <input type="hidden" value="<?php echo $data_project->id_project ?>" name="id_project" class="form-control" readonly>
                 </div>
                 <div class="form-group">
                     <label for="text" class="m-0 font-weight-bold text-dark">Nama Project</label>

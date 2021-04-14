@@ -44,11 +44,11 @@ class Model_account extends CI_Model
     {
         $query = $this->db->select('pelanggan.*,id_user')
                  ->from('pelanggan')
-                 ->join('user', 'user.id_pelanggan=pelanggan.id_pelanggan','inner')
+                 ->join('user', 'user.id_user=pelanggan.id_pelanggan','inner')
                  ->where('id_user',$id_user)
                  ->order_by('id_pelanggan', 'DESC')
                  ->get();
-                //echo $this->db->last_query();
+                // echo $this->db->last_query();
         return $query->result();
     }
 

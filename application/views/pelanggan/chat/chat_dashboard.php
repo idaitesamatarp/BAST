@@ -133,7 +133,7 @@ jQuery(document).ready(function($) {
  
                 var oldscrollHeight = $container[0].scrollHeight;
                 var oldLength = 0;
-                $.post('<?= site_url('marketing/chatpel/getChats') ?>', {chatWith: $data.chatWith}, function(data, textStatus, xhr) {
+                $.post('<?= site_url('pelanggan/chat/getChats') ?>', {chatWith: $data.chatWith}, function(data, textStatus, xhr) {
                     $that.find('a.nama_kar').text(data.nama_kar);
                     // from last
                     var chatLength = data.chats.length;
@@ -151,6 +151,7 @@ jQuery(document).ready(function($) {
                             tplBody.find('tbody').attr('id', id); // set class
                             tplBody.find('td.nama_kar').text(val.nama_kar); // set name
                             tplBody.find('td.time').text(val.time); // set time
+                            tplBody.find('td.avatar').html('<img src="<?= base_url('upload/user') ?>/'+val.image+'">'); // set time
                             tplBody.find('.msg-wgt-message-list-body > td').html(nl2br(val.message)); // set message
                             $that.find('.msg-wgt-message-list').append(tplBody.html()); // append message
  
@@ -167,7 +168,7 @@ jQuery(document).ready(function($) {
             $that.find('textarea').on('keydown', function(e) {
                 var $textArea = $(this);
                 if (e.keyCode === 13 && e.shiftKey === false) {
-                    $.post('<?= site_url('marketing/chatpel/sendMessage') ?>', {message: $textArea.val(), chatWith: $data.chatWith}, function(data, textStatus, xhr) {
+                    $.post('<?= site_url('pelanggan/chat/sendMessage') ?>', {message: $textArea.val(), chatWith: $data.chatWith}, function(data, textStatus, xhr) {
                     });
                     $textArea.val(''); // clear input
  
